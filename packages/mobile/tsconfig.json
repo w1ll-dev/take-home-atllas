@@ -1,6 +1,29 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
+    "strictNullChecks": false,
+    "strict": true,
+    "jsx": "react-jsx",
+    "baseUrl": "./",
+    "paths": {
+      "@assets": ["src/assets"],
+      "@assets*": ["src/assets*"],
+      "@hooks": ["src/hooks"],
+      "@hooks*": ["src/hooks*"],
+      "@screens": ["src/screens"],
+      "@screens*": ["src/screens*"],
+      "@styles": ["src/styles"],
+      "@styles*": ["src/styles*"],
+      "@providers": ["src/components/providers"],
+      "@providers*": ["src/components/providers*"],
+      "@atoms": ["src/components/atoms"],
+      "@atoms*": ["src/components/atoms*"],
+      "@molecules": ["src/components/molecules"],
+      "@molecules*": ["src/components/molecules*"],
+      "@organisms": ["src/components/organisms"],
+      "@organisms*": ["src/components/organisms*"],
+      "@navigation": ["src/navigation"],
+      "@navigation*": ["src/navigation*"]
+    }
   }
 }
