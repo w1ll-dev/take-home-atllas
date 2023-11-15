@@ -6,7 +6,8 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "commit": "npx cz"
   },
   "dependencies": {
     "@react-navigation/native": "^6.1.9",
@@ -22,7 +23,14 @@
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@types/react": "~18.2.14",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
     "typescript": "^5.1.3"
   },
-  "private": true
+  "private": true,
+  "config": {
+    "commitizen": {
+      "path": "./packages/mobile/node_modules/cz-conventional-changelog"
+    }
+  }
 }
