@@ -1,12 +1,8 @@
-import { IconName } from "./iconName";
+import { ImageName } from "./imageName";
 
 type MediaDimensions = { width: number; height: number };
 
-const IconDimensions: Record<IconName, MediaDimensions> = {
-  close: {
-    width: 20,
-    height: 20,
-  },
+const ImageDimensions: Record<ImageName, MediaDimensions> = {
   darkLogo: {
     width: 251,
     height: 64,
@@ -17,5 +13,5 @@ const IconDimensions: Record<IconName, MediaDimensions> = {
   },
 };
 
-export { IconDimensions };
+export { ImageDimensions };
 export type { MediaDimensions };
