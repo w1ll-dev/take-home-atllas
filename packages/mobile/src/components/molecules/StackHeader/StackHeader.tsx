@@ -1,10 +1,10 @@
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { View } from "tamagui";
+import { YStack } from "tamagui";
 
 const StackHeader = () => {
   const { top } = useSafeAreaInsets();
 
-  return <View height={top} />;
+  return <YStack height={top} backgroundColor={"$background"} />;
 };
 
 export { StackHeader };
