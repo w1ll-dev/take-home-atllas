@@ -1,21 +1,38 @@
-// the v2 config imports the css driver on web and react-native on native
+import { interRegular, interSemiBold } from "@styles/fonts";
+import { dark, light } from "@styles/themes";
+import { color, radius, size, space, zIndex } from "@tamagui/themes";
+import { createTamagui, createTokens } from "tamagui";
 
-// for reanimated: @tamagui/config/v2-reanimated
+const tokens = createTokens({
+  size,
+  space,
+  zIndex,
+  color,
+  radius,
+});
 
-// for react-native only: @tamagui/config/v2-native
+const config = createTamagui({
+  tokens,
+  _fonts: {
+    heading: interSemiBold,
+    body: interRegular,
+  },
+  get fonts() {
+    return this._fonts;
+  },
+  set fonts(value) {
+    this._fonts = value;
+  },
+  themes: {
+    dark,
+    light,
+  },
+});
 
-import { config } from "@tamagui/config/v2";
-
-import { createTamagui } from "tamagui";
-const tamaguiConfig = createTamagui(config);
-// this makes typescript properly type everything based on the config
-
-type Conf = typeof tamaguiConfig;
+export type Conf = typeof config;
 
 declare module "tamagui" {
   interface TamaguiCustomConfig extends Conf {}
 }
-export default tamaguiConfig;
-// depending on if you chose tamagui, @tamagui/core, or @tamagui/web
 
-// be sure the import and declare module lines both use that same name
+export default config;
