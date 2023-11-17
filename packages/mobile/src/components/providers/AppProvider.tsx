@@ -6,7 +6,9 @@ import { TamaguiProvider } from "tamagui";
 
 import { useCachedResources } from "@hooks/useCachedResources";
 import config from "../../../tamagui.config";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { gestureHandlerRootViewStyles } from "./styles";
 
 type AppProviderProps = {
   children: React.ReactNode;
@@ -18,9 +20,13 @@ const AppProvider = ({ children }: AppProviderProps) => {
   if (!isLoadingComplete) return null;
 
   return (
-    <SafeAreaProvider>
-      <TamaguiProvider config={config}>{children}</TamaguiProvider>
-    </SafeAreaProvider>
+    <TamaguiProvider config={config}>
+      <SafeAreaProvider>
+        <GestureHandlerRootView style={gestureHandlerRootViewStyles.container}>
+          {children}
+        </GestureHandlerRootView>
+      </SafeAreaProvider>
+    </TamaguiProvider>
   );
 };
 
