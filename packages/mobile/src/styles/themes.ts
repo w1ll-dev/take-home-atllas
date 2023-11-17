@@ -3,6 +3,7 @@ const dark = {
   cornflowerBlue: "#7a63eb",
   background: "#060719",
   text: "#ffffff",
+  errorRed: "#FF4c4c",
 };
 
 const light = {
@@ -10,6 +11,7 @@ const light = {
   cornflowerBlue: "#7a63eb",
   background: "#ffffff",
   text: "#060719",
+  errorRed: "#FF4c4c",
 };
 
 export { dark, light };
