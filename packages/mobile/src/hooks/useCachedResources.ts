@@ -3,6 +3,7 @@ import { fonts } from "@styles/fonts";
 import * as Font from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect, useState } from "react";
+
 /**
  *
  * Load any resources or data that we need prior to rendering the app
@@ -18,9 +19,9 @@ const useCachedResources = () => {
         // Load fonts
         await Font.loadAsync({
           ...FontAwesome.font,
-          [fonts.InterExtraLight]: require("@tamagui/font-inter/otf/Inter-ExtraLight.otf"),
-          [fonts.InterRegular]: require("@tamagui/font-inter/otf/Inter-Regular.otf"),
-          [fonts.InterSemiBold]: require("@tamagui/font-inter/otf/Inter-SemiBold.otf"),
+          [fonts.InterExtraLight]: require("@assets/fonts/files/Inter-ExtraLight.otf"),
+          [fonts.InterRegular]: require("@assets/fonts/files/Inter-Regular.otf"),
+          [fonts.InterSemiBold]: require("@assets/fonts/files/Inter-SemiBold.otf"),
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service
