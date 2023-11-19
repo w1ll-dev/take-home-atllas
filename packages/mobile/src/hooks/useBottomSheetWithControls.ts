@@ -6,12 +6,12 @@ const useBottomSheetWithControls = () => {
   const sheetRef = useRef<BottomSheet>(null);
 
   const handleOpenBottomSheet = useCallback(
-    () => sheetRef.current?.expand(),
+    () => sheetRef?.current?.expand(),
     [],
   );
 
   const handleCloseBottomSheet = useCallback(
-    () => sheetRef.current?.close(),
+    () => sheetRef?.current?.collapse(),
     [],
   );
 
