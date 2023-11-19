@@ -3,15 +3,15 @@ import {
   NativeStackNavigationOptions,
   createNativeStackNavigator,
 } from "@react-navigation/native-stack";
-import { LandingScreen, RegisterScreen } from "@screens";
+import { Home, LandingScreen, RegisterScreen } from "@screens";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackNavigatorParamList>();
 
 const screenOptions = ({
   background,
   headerType,
 }: CustomHeaderProps): NativeStackNavigationOptions => ({
-  presentation: "modal",
+  presentation: "fullScreenModal",
   title: "",
   header: ({ navigation }) => (
     <StackHeader
@@ -41,6 +41,14 @@ const RootStackNavigator = () => {
           })
         }>
         <Stack.Screen name="Register" component={RegisterScreen} />
+      </Stack.Group>
+      <Stack.Group
+        screenOptions={() =>
+          screenOptions({
+            background: "$background2",
+          })
+        }>
+        <Stack.Screen name="Home" component={Home} />
       </Stack.Group>
     </Stack.Navigator>
   );
