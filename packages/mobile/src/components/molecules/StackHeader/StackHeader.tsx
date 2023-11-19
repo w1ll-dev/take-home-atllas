@@ -4,7 +4,7 @@ import { NativeStackHeaderProps } from "@react-navigation/native-stack";
 import { useMemo } from "react";
 import { TouchableOpacityProps } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { ColorTokens, Stack, XStack } from "tamagui";
+import { ColorTokens, Square, Stack, XStack } from "tamagui";
 import { iconButtonHitSlop } from "./styles";
 
 type CustomHeaderProps = {
@@ -31,13 +31,19 @@ const StackHeader = ({
   );
 
   return (
-    <XStack height={top} backgroundColor={background}>
-      <ComponentVisibility isVisible={headerType === "closeModal"}>
-        <Stack padding="$5">
-          <Image image="close" touchProps={touchProps} />
-        </Stack>
-      </ComponentVisibility>
-    </XStack>
+    <>
+      <Square height={top} backgroundColor={background} />
+      <XStack backgroundColor={background}>
+        <ComponentVisibility isVisible={headerType === "closeModal"}>
+          <Stack
+            backgroundColor={background}
+            paddingHorizontal="$5"
+            paddingTop="$5">
+            <Image image="close" touchProps={touchProps} />
+          </Stack>
+        </ComponentVisibility>
+      </XStack>
+    </>
   );
 };
 
