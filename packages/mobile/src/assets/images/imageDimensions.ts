@@ -11,6 +11,10 @@ const ImageDimensions: Record<ImageName, MediaDimensions> = {
     width: 251,
     height: 74,
   },
+  close: {
+    width: 20,
+    height: 20,
+  },
 };
 
 export { ImageDimensions };
