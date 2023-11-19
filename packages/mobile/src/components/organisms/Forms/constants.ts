@@ -1,0 +1,3 @@
+const MIN_PASSWORD_CHAR = 12;
+
+export { MIN_PASSWORD_CHAR };
