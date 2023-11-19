@@ -1,5 +1,5 @@
 type LoginFieldValues = {
-  email: string;
+  username: string;
   password: string;
 };
 

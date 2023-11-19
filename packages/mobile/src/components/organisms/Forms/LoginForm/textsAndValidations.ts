@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { MIN_PASSWORD_CHAR } from "../constants";
+import { MIN_PASSWORD_CHAR, MIN_USERNAME_CHAR } from "../constants";
 const texts = {
   login: "Login",
 };
@@ -9,28 +9,32 @@ const textValidations: Record<
   Record<keyof LoginFieldValues, string>
 > = {
   errors: {
-    email: "Please, provide a valid email.",
+    username: `Please provide a username of at least ${MIN_USERNAME_CHAR} characters without space.`,
     password: `Please provide a password of at least ${MIN_PASSWORD_CHAR} characters.`,
   },
   labels: {
-    email: "Email",
+    username: "Username",
     password: "Password",
   },
   placeholders: {
-    email: "Email",
+    username: "Username",
     password: "Password",
   },
 };
 
 const yupLoginSchema = yup.object().shape<YupSchemaShape<LoginFieldValues>>({
-  email: yup
+  username: yup
     .string()
-    .email(textValidations.errors.email)
-    .required(textValidations.errors.email),
+    .test(
+      "no-space",
+      textValidations.errors.username,
+      value => !value.includes(" "),
+    )
+    .required(textValidations.errors.username),
   password: yup
     .string()
     .min(MIN_PASSWORD_CHAR, textValidations.errors.password)
     .required(textValidations.errors.password),
 });
 
-export { textValidations, texts, yupLoginSchema, MIN_PASSWORD_CHAR };
+export { textValidations, texts, yupLoginSchema };
