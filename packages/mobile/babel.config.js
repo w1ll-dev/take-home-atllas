@@ -17,6 +17,7 @@ module.exports = function (api) {
             "@molecules": "./src/components/molecules",
             "@organisms": "./src/components/organisms",
             "@navigation": "./src/navigation",
+            "@repository": "./src/repository",
           },
         },
       ],

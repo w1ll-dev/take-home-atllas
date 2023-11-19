@@ -23,7 +23,9 @@
       "@organisms": ["src/components/organisms"],
       "@organisms*": ["src/components/organisms*"],
       "@navigation": ["src/navigation"],
-      "@navigation*": ["src/navigation*"]
+      "@navigation*": ["src/navigation*"],
+      "@repository": ["src/repository"],
+      "@repository*": ["src/repository*"]
     }
   }
 }
