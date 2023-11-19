@@ -39,7 +39,8 @@ const AuthRouter: IRoute = {
       const {
         username,
         password,
-      } = req.body;
+      } = JSON.parse(req.body);
+      
       if (!username || !password) {
         return res.status(400).json({
           success: false,
