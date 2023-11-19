@@ -4,7 +4,7 @@ import "@tamagui/core/reset.css";
 
 import { TamaguiProvider } from "tamagui";
 
-import { useCachedResources } from "@hooks/useCachedResources";
+import { useCachedResources } from "@hooks";
 import config from "../../../tamagui.config";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";

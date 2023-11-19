@@ -4,7 +4,7 @@ import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetBackdropProps,
 } from "@gorhom/bottom-sheet";
-import { useBottomSheetWithControls } from "@hooks/useBottomSheetWithControls";
+import { useBottomSheetWithControls } from "@hooks";
 import { useNavigationForRootStack } from "@navigation/hooks";
 import { LoginForm } from "@organisms/Forms";
 import { useCallback } from "react";

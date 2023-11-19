@@ -4,7 +4,7 @@ import {
   NavigationContainer,
 } from "@react-navigation/native";
 import { RootStackNavigator } from "./RootStackNavigator/RootStackNavigator";
-import { useColorScheme } from "@hooks/useColorScheme";
+import { useColorScheme } from "@hooks";
 
 const Navigation = () => {
   const colorScheme = useColorScheme();
