@@ -22566,17 +22566,23 @@
       "dark": {
         "royalBlue": "#5372ea",
         "cornflowerBlue": "#7a63eb",
-        "background": "#060719",
-        "text": "#ffffff",
-        "errorRed": "#FF4c4c",
+        "background1": "#060719",
+        "background2": "#fafafa",
+        "text1": "#ffffff",
+        "text2": "#060719",
+        "errorRed": "#ff4c4c",
+        "inputFeedBack": "#e2e2e2",
         "id": "dark"
       },
       "light": {
         "royalBlue": "#5372ea",
         "cornflowerBlue": "#7a63eb",
-        "background": "#ffffff",
-        "text": "#060719",
+        "background1": "#fafafa",
+        "background2": "#060719",
+        "text1": "#060719",
+        "text2": "#ffffff",
         "errorRed": "#FF4c4c",
+        "inputFeedBack": "#e2e2e2",
         "id": "light"
       }
     },
