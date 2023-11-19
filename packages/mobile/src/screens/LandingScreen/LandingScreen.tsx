@@ -36,7 +36,7 @@ const LandingScreen = () => {
 
   return (
     <>
-      <ScreenContainer background="$background1">
+      <ScreenContainer background="$background1" statusBarStyle="light">
         <YStack marginTop="$10" marginBottom="$5" alignItems="center">
           <Image image="darkLogo" />
         </YStack>

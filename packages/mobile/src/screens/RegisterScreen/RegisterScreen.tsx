@@ -3,7 +3,10 @@ import { RegisterForm } from "@organisms/Forms";
 
 const RegisterScreen = () => {
   return (
-    <ScreenContainer paddingHorizontal="$5" background="$background2">
+    <ScreenContainer
+      padding="$5"
+      background="$background2"
+      statusBarStyle="dark">
       <RegisterForm />
     </ScreenContainer>
   );
