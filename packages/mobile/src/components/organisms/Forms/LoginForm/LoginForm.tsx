@@ -6,6 +6,8 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Button, Square, YStack } from "tamagui";
 import { StyledBottomSheetTextInput } from "./styles";
 import { textValidations, texts, yupLoginSchema } from "./textsAndValidations";
+import { login } from "@repository";
+import { useMutation } from "@tanstack/react-query";
 
 const LoginForm = () => {
   const { bottom } = useSafeAreaInsets();
@@ -19,8 +21,19 @@ const LoginForm = () => {
     resolver: yupResolver(yupLoginSchema),
   });
 
-  const onSubmit = async (formData: LoginFieldValues) =>
-    console.log("🚀 ~ LoginForm ~ data:", formData);
+  const mutation = useMutation({
+    mutationFn: login,
+    onSuccess: () => {
+      console.log("🎉🎉🎉LOGIN SUCCESS🎉🎉🎉");
+    },
+  });
+
+  const onSubmit = async (formData: LoginFieldValues) => {
+    mutation.mutate({
+      username: formData.username,
+      password: formData.password,
+    });
+  };
 
   return (
     <YStack padding="$5" justifyContent="space-between" flex={1}>
@@ -30,17 +43,17 @@ const LoginForm = () => {
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
             <InputFeedback
-              placeholder={textValidations.placeholders.email}
-              errorMessage={errors.email?.message}>
+              placeholder={textValidations.placeholders.username}
+              errorMessage={errors.username?.message}>
               <StyledBottomSheetTextInput
-                hasError={!!errors.email?.message}
+                hasError={!!errors.username?.message}
                 onChangeText={onChange}
                 onBlur={onBlur}
                 value={value}
               />
             </InputFeedback>
           )}
-          name="email"
+          name="username"
         />
         <Controller
           control={control}
