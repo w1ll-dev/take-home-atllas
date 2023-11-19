@@ -2,6 +2,7 @@ import { BottomSheetTextInput } from "@gorhom/bottom-sheet";
 import { styled } from "tamagui";
 
 const StyledBottomSheetTextInput = styled(BottomSheetTextInput, {
+  autoCapitalize: "none",
   height: "$6",
   borderWidth: "$1",
   borderRadius: "$4",

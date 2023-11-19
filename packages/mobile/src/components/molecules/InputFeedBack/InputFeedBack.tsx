@@ -27,7 +27,7 @@ const InputFeedback = ({
   );
 
   return (
-    <YStack height="$11">
+    <YStack height="$12">
       <Placeholder color={inputColor}>{placeholder}</Placeholder>
       {children}
       <ComponentVisibility isVisible={!!errorMessage}>
