@@ -1,15 +1,16 @@
-import { RegisterTitle } from "@atoms";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { InputFeedback } from "@molecules";
+import { useNavigationForRootStack } from "@navigation/hooks";
+import { login } from "@repository";
+import { useMutation } from "@tanstack/react-query";
 import { Controller, useForm } from "react-hook-form";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Button, Square, YStack } from "tamagui";
 import { StyledBottomSheetTextInput } from "./styles";
 import { textValidations, texts, yupLoginSchema } from "./textsAndValidations";
-import { login } from "@repository";
-import { useMutation } from "@tanstack/react-query";
 
 const LoginForm = () => {
+  const { navigate } = useNavigationForRootStack();
   const { bottom } = useSafeAreaInsets();
 
   const {
@@ -24,7 +25,7 @@ const LoginForm = () => {
   const mutation = useMutation({
     mutationFn: login,
     onSuccess: () => {
-      console.log("🎉🎉🎉LOGIN SUCCESS🎉🎉🎉");
+      navigate("Home");
     },
   });
 
@@ -37,7 +38,6 @@ const LoginForm = () => {
 
   return (
     <YStack padding="$5" justifyContent="space-between" flex={1}>
-      <RegisterTitle>{texts.login}</RegisterTitle>
       <YStack>
         <Controller
           control={control}
