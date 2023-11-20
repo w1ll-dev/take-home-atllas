@@ -4,11 +4,11 @@ import { useNavigationForRootStack } from "@navigation/hooks";
 import { login } from "@repository";
 import { useMutation } from "@tanstack/react-query";
 import { Controller, useForm } from "react-hook-form";
+import { Alert } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Button, Square, YStack } from "tamagui";
 import { StyledBottomSheetTextInput } from "./styles";
 import { textValidations, texts, yupLoginSchema } from "./textsAndValidations";
-import { Alert } from "react-native";
 
 const LoginForm = () => {
   const { navigate } = useNavigationForRootStack();
@@ -76,6 +76,7 @@ const LoginForm = () => {
                 onChangeText={onChange}
                 onBlur={onBlur}
                 value={value}
+                secureTextEntry
               />
             </InputFeedback>
           )}
