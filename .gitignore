@@ -33,3 +33,10 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Jest
+#
+.jest/
+Pixel*.log
+artifacts/
+coverage/
