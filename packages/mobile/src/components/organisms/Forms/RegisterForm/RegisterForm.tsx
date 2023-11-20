@@ -5,17 +5,23 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Button, Square, YStack } from "tamagui";
 import { StyledTextInput } from "./styles";
+import { RegisterTitle } from "@atoms";
 import {
   textValidations,
   texts,
   yupRegisterSchema,
 } from "./textsAndValidations";
-import { RegisterTitle } from "@atoms";
+import { useMutation } from "@tanstack/react-query";
+import { register } from "@repository";
+import { Alert } from "react-native";
+import { useNavigationForRootStack } from "@navigation/hooks";
 
 const RegisterForm = () => {
+  const { navigate } = useNavigationForRootStack();
   const { bottom } = useSafeAreaInsets();
 
   const {
+    reset,
     control,
     handleSubmit,
     formState: { errors },
@@ -24,8 +30,28 @@ const RegisterForm = () => {
     resolver: yupResolver(yupRegisterSchema),
   });
 
-  const onSubmit = (data: RegisterFieldValues) =>
-    console.log("🚀 ~ RegisterForm ~ data:", data);
+  const mutation = useMutation({
+    mutationFn: register,
+    onSuccess: (authToken: string | null) => {
+      if (!authToken) {
+        Alert.alert(texts.registerError, texts.pleaseTryAgain);
+        return;
+      }
+
+      reset();
+      navigate("Home", {
+        authToken,
+      });
+    },
+  });
+
+  const onSubmit = (formData: RegisterFieldValues) => {
+    mutation.mutate({
+      displayName: `${formData.firstName} ${formData.lastName}`,
+      username: formData.username,
+      password: formData.password,
+    });
+  };
 
   return (
     <KeyboardAwareScrollView>
@@ -67,17 +93,17 @@ const RegisterForm = () => {
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
             <InputFeedback
-              placeholder={textValidations.placeholders.email}
-              errorMessage={errors.email?.message}>
+              placeholder={textValidations.placeholders.username}
+              errorMessage={errors.username?.message}>
               <StyledTextInput
-                hasError={!!errors.email?.message}
+                hasError={!!errors.username?.message}
                 onChangeText={onChange}
                 onBlur={onBlur}
                 value={value}
               />
             </InputFeedback>
           )}
-          name="email"
+          name="username"
         />
         <Controller
           control={control}
