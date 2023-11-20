@@ -4,6 +4,7 @@ import {
   createNativeStackNavigator,
 } from "@react-navigation/native-stack";
 import { Home, LandingScreen, RegisterScreen } from "@screens";
+import { RootStackNavigatorParamList } from "src/types/navigation";
 
 const Stack = createNativeStackNavigator<RootStackNavigatorParamList>();
 
