@@ -8,12 +8,14 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Button, Square, YStack } from "tamagui";
 import { StyledBottomSheetTextInput } from "./styles";
 import { textValidations, texts, yupLoginSchema } from "./textsAndValidations";
+import { Alert } from "react-native";
 
 const LoginForm = () => {
   const { navigate } = useNavigationForRootStack();
   const { bottom } = useSafeAreaInsets();
 
   const {
+    reset,
     control,
     handleSubmit,
     formState: { errors },
@@ -24,8 +26,16 @@ const LoginForm = () => {
 
   const mutation = useMutation({
     mutationFn: login,
-    onSuccess: () => {
-      navigate("Home");
+    onSuccess: data => {
+      if (!data) {
+        Alert.alert(texts.invalidCredentials, texts.pleaseTryAgain);
+        return;
+      }
+
+      reset();
+      navigate("Home", {
+        authToken: data,
+      });
     },
   });
 
@@ -74,6 +84,7 @@ const LoginForm = () => {
       </YStack>
       <Square height="$5" />
       <Button
+        disabled={mutation.isPending}
         height="$6"
         color="$text1"
         size="$2"

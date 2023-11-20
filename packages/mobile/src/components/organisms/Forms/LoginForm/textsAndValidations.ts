@@ -2,6 +2,8 @@ import * as yup from "yup";
 import { MIN_PASSWORD_CHAR, MIN_USERNAME_CHAR } from "../constants";
 const texts = {
   login: "Login",
+  invalidCredentials: "😔 Invalid credentials",
+  pleaseTryAgain: "Please try again",
 };
 
 const textValidations: Record<
