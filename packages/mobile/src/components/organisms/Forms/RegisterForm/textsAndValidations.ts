@@ -11,7 +11,6 @@ const texts = {
   register: "Register",
   registerError: "❌ Register error",
   success: "✅ Success",
-  pleaseTryAgain: "Please try again",
   nowPlease: "Now please, sign in with your credentials.",
 };
 
