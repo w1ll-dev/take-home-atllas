@@ -27,6 +27,7 @@ const textValidations: Record<
 const yupLoginSchema = yup.object().shape<YupSchemaShape<LoginFieldValues>>({
   username: yup
     .string()
+    .min(MIN_USERNAME_CHAR, textValidations.errors.username)
     .test(
       "no-space",
       textValidations.errors.username,
