@@ -5,7 +5,6 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Button, Square, YStack } from "tamagui";
 import { StyledTextInput } from "./styles";
-import { RegisterTitle } from "@atoms";
 import {
   textValidations,
   texts,
@@ -56,7 +55,6 @@ const RegisterForm = () => {
 
   return (
     <KeyboardAwareScrollView>
-      <RegisterTitle>{texts.welcome}</RegisterTitle>
       <YStack marginTop="$5">
         <Controller
           control={control}

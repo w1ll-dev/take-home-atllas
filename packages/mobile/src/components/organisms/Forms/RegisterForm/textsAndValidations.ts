@@ -5,7 +5,6 @@ const onlyLettersRegex = /^[A-Za-z]+$/;
 
 const texts = {
   register: "Register",
-  welcome: "Welcome",
   registerError: "❌ Register error",
   success: "✅ Success",
   pleaseTryAgain: "Please try again",

@@ -1,11 +1,4 @@
-import { H1, Paragraph, styled } from "tamagui";
-
-const RegisterTitle = styled(H1, {
-  color: "$text2",
-  fontFamily: "$heading",
-  textAlign: "center",
-  size: "$1",
-});
+import { Paragraph, styled } from "tamagui";
 
 const Placeholder = styled(Paragraph, {
   fontFamily: "$body",
@@ -19,4 +12,4 @@ const ErrorMessage = styled(Paragraph, {
   marginVertical: "$2",
 });
 
-export { RegisterTitle, Placeholder, ErrorMessage };
+export { ErrorMessage, Placeholder };
