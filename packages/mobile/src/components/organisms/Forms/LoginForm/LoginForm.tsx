@@ -9,6 +9,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Button, Square, YStack } from "tamagui";
 import { StyledBottomSheetTextInput } from "./styles";
 import { textValidations, texts, yupLoginSchema } from "./textsAndValidations";
+import { loginTestIDs } from "@constants";
 
 const LoginForm = () => {
   const { navigate } = useNavigationForRootStack();
@@ -60,6 +61,7 @@ const LoginForm = () => {
                 onChangeText={onChange}
                 onBlur={onBlur}
                 value={value}
+                testID={loginTestIDs.usernameField}
               />
             </InputFeedback>
           )}
@@ -77,6 +79,7 @@ const LoginForm = () => {
                 onBlur={onBlur}
                 value={value}
                 secureTextEntry
+                testID={loginTestIDs.passwordField}
               />
             </InputFeedback>
           )}
@@ -91,6 +94,7 @@ const LoginForm = () => {
         size="$2"
         bottom={bottom}
         onPress={handleSubmit(onSubmit)}
+        testID={loginTestIDs.loginButton}
         backgroundColor="$royalBlue">
         {texts.login}
       </Button>

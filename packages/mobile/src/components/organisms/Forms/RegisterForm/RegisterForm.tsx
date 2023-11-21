@@ -15,6 +15,7 @@ import { useMutation } from "@tanstack/react-query";
 import { register } from "@repository";
 import { Alert } from "react-native";
 import { useNavigationForRootStack } from "@navigation/hooks";
+import { registerTestIDs } from "@constants";
 
 const RegisterForm = () => {
   const { navigate } = useNavigationForRootStack();
@@ -68,6 +69,7 @@ const RegisterForm = () => {
                 onChangeText={onChange}
                 onBlur={onBlur}
                 value={value}
+                testID={registerTestIDs.firstNameField}
               />
             </InputFeedback>
           )}
@@ -84,6 +86,7 @@ const RegisterForm = () => {
                 onChangeText={onChange}
                 onBlur={onBlur}
                 value={value}
+                testID={registerTestIDs.lastNameField}
               />
             </InputFeedback>
           )}
@@ -100,6 +103,7 @@ const RegisterForm = () => {
                 onChangeText={onChange}
                 onBlur={onBlur}
                 value={value}
+                testID={registerTestIDs.usernameField}
               />
             </InputFeedback>
           )}
@@ -116,6 +120,7 @@ const RegisterForm = () => {
                 onChangeText={onChange}
                 onBlur={onBlur}
                 value={value}
+                testID={registerTestIDs.passwordField}
               />
             </InputFeedback>
           )}
@@ -132,6 +137,7 @@ const RegisterForm = () => {
                 onChangeText={onChange}
                 onBlur={onBlur}
                 value={value}
+                testID={registerTestIDs.passwordConfirmationField}
               />
             </InputFeedback>
           )}
@@ -140,11 +146,13 @@ const RegisterForm = () => {
       </YStack>
       <Square height="$5" />
       <Button
+        disabled={mutation.isPending}
         height="$6"
         color="$text1"
         size="$2"
         bottom={bottom}
         onPress={handleSubmit(onSubmit)}
+        testID={registerTestIDs.registerButton}
         backgroundColor="$royalBlue">
         {texts.register}
       </Button>
