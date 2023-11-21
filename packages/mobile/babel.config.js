@@ -18,6 +18,8 @@ module.exports = function (api) {
             "@organisms": "./src/components/organisms",
             "@navigation": "./src/navigation",
             "@repository": "./src/repository",
+            "@constants": "./src/constants",
+            jest: "./jest",
           },
         },
       ],

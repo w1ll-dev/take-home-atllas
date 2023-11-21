@@ -6,6 +6,7 @@
     "jsx": "react-jsx",
     "baseUrl": "./",
     "paths": {
+      "jest": ["./jest"],
       "@assets": ["src/assets"],
       "@assets*": ["src/assets*"],
       "@hooks": ["src/hooks"],
@@ -25,7 +26,9 @@
       "@navigation": ["src/navigation"],
       "@navigation*": ["src/navigation*"],
       "@repository": ["src/repository"],
-      "@repository*": ["src/repository*"]
+      "@repository*": ["src/repository*"],
+      "@constants": ["src/constants"],
+      "@constants*": ["src/constants*"]
     }
   }
 }
