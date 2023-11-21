@@ -1,5 +1,5 @@
 const getCookieFromAuthToken = (authToken: string) =>
-  `SESSION_TOKEN=${authToken}; Domain=.example.com; Path=/; Secure;,`;
+  `SESSION_TOKEN=${authToken};`;
 
 const getWebViewSource = (authToken: string) => {
   const cookie = getCookieFromAuthToken(authToken);
