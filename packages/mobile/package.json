@@ -10,7 +10,7 @@
     "commit": "npx cz",
     "test:eslint": "echo \"\\033[33mRunning eslint check\" && eslint .",
     "test:tsc": "echo \"\\033[33mRunning typescript check\" && tsc",
-    "test:unity": "npx jest --maxWorkers=4"
+    "test:unit": "npx jest --maxWorkers=4"
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "^4.5.1",
