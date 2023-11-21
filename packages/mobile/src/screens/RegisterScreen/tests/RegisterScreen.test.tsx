@@ -44,7 +44,7 @@ describe("RegisterScreen", () => {
   });
 
   it("Should show correct error message for each input", async () => {
-    const { getByTestId, getByText } = customRender(
+    const { getByTestId, getByText, getAllByText } = customRender(
       withBottomSheetHOC(<RegisterScreen />),
     );
 
@@ -55,11 +55,11 @@ describe("RegisterScreen", () => {
     const firstNameErrorMessage = getByText(textValidations.errors.firstName);
     const lastNameErrorMessage = getByText(textValidations.errors.lastName);
     const usernameErrorMessage = getByText(textValidations.errors.username);
-    const passwordErrorMessage = getByText(textValidations.errors.password);
+    const passwordErrorMessages = getAllByText(textValidations.errors.password);
 
     expect(firstNameErrorMessage).toBeDefined();
     expect(lastNameErrorMessage).toBeDefined();
     expect(usernameErrorMessage).toBeDefined();
-    expect(passwordErrorMessage).toBeDefined();
+    expect(passwordErrorMessages.length).toBe(2);
   });
 });
