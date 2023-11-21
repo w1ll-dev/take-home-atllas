@@ -1,5 +1,9 @@
 import * as yup from "yup";
-import { MIN_PASSWORD_CHAR, MIN_USERNAME_CHAR } from "../constants";
+import {
+  loginValidations,
+  textValidations as loginTextsAndValidations,
+} from "../LoginForm/textsAndValidations";
+import { MIN_PASSWORD_CHAR } from "../constants";
 
 const onlyLettersRegex = /^[A-Za-z]+$/;
 
@@ -16,24 +20,24 @@ const textValidations: Record<
   Record<keyof RegisterFieldValues, string>
 > = {
   errors: {
+    username: loginTextsAndValidations.errors.username,
+    password: loginTextsAndValidations.errors.password,
     firstName: "Please, provide your first name.",
     lastName: "Please, provide your last name.",
-    username: "Please, provide your username.",
-    password: `Please, provide a password of at least ${MIN_PASSWORD_CHAR} characters.`,
     passwordConfirmation: "Password must match.",
   },
   labels: {
+    username: loginTextsAndValidations.labels.username,
+    password: loginTextsAndValidations.labels.password,
     firstName: "First Name",
     lastName: "Last Name",
-    username: "Username",
-    password: "Password",
     passwordConfirmation: "Password Confirmation",
   },
   placeholders: {
+    username: loginTextsAndValidations.placeholders.username,
+    password: loginTextsAndValidations.placeholders.password,
     firstName: "First Name",
     lastName: "Last Name",
-    username: "Username",
-    password: "Password",
     passwordConfirmation: "Password Confirmation",
   },
 };
@@ -41,6 +45,7 @@ const textValidations: Record<
 const yupRegisterSchema = yup
   .object()
   .shape<YupSchemaShape<RegisterFieldValues>>({
+    ...loginValidations,
     firstName: yup
       .string()
       .required(textValidations.errors.firstName)
@@ -49,17 +54,10 @@ const yupRegisterSchema = yup
       .string()
       .required(textValidations.errors.lastName)
       .matches(new RegExp(onlyLettersRegex), textValidations.errors.lastName),
-    username: yup
-      .string()
-      .min(MIN_USERNAME_CHAR, textValidations.errors.username)
-      .required(textValidations.errors.username),
-    password: yup
-      .string()
-      .min(MIN_PASSWORD_CHAR, textValidations.errors.password)
-      .required(textValidations.errors.password),
     passwordConfirmation: yup
       .string()
-      .min(MIN_PASSWORD_CHAR, textValidations.errors.password)
+      .min(MIN_PASSWORD_CHAR, loginTextsAndValidations.errors.password)
+      .required(loginTextsAndValidations.errors.password)
       .test(
         "passwords-match",
         textValidations.errors.passwordConfirmation,

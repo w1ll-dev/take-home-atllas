@@ -1,7 +1,11 @@
+import { registerTestIDs } from "@constants";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { InputFeedback } from "@molecules";
+import { useNavigationForRootStack } from "@navigation/hooks";
+import { register } from "@repository";
+import { useMutation } from "@tanstack/react-query";
 import { Controller, useForm } from "react-hook-form";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { Alert } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Button, Square, YStack } from "tamagui";
 import { StyledTextInput } from "./styles";
@@ -10,11 +14,6 @@ import {
   texts,
   yupRegisterSchema,
 } from "./textsAndValidations";
-import { useMutation } from "@tanstack/react-query";
-import { register } from "@repository";
-import { Alert } from "react-native";
-import { useNavigationForRootStack } from "@navigation/hooks";
-import { registerTestIDs } from "@constants";
 
 const RegisterForm = () => {
   const { navigate } = useNavigationForRootStack();
@@ -54,7 +53,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <KeyboardAwareScrollView>
+    <>
       <YStack marginTop="$5">
         <Controller
           control={control}
@@ -154,7 +153,7 @@ const RegisterForm = () => {
         backgroundColor="$royalBlue">
         {texts.register}
       </Button>
-    </KeyboardAwareScrollView>
+    </>
   );
 };
 

@@ -24,7 +24,7 @@ const textValidations: Record<
   },
 };
 
-const yupLoginSchema = yup.object().shape<YupSchemaShape<LoginFieldValues>>({
+const loginValidations = {
   username: yup
     .string()
     .min(MIN_USERNAME_CHAR, textValidations.errors.username)
@@ -38,6 +38,10 @@ const yupLoginSchema = yup.object().shape<YupSchemaShape<LoginFieldValues>>({
     .string()
     .min(MIN_PASSWORD_CHAR, textValidations.errors.password)
     .required(textValidations.errors.password),
-});
+};
 
-export { textValidations, texts, yupLoginSchema };
+const yupLoginSchema = yup
+  .object()
+  .shape<YupSchemaShape<LoginFieldValues>>(loginValidations);
+
+export { textValidations, texts, yupLoginSchema, loginValidations };

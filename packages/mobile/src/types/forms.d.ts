@@ -6,10 +6,8 @@ type LoginFieldValues = {
 type RegisterFieldValues = {
   firstName: string;
   lastName: string;
-  username: string;
-  password: string;
   passwordConfirmation: string;
-};
+} & LoginFieldValues;
 
 type YupSchemaShape<Fields> = {
   [Key in keyof Fields]: ConditionalSchema<Fields[Key]>;
