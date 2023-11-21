@@ -4,6 +4,5 @@ import { styled } from "tamagui";
 export const ScrollView = styled(KeyboardAwareScrollView, {
   contentContainerStyle: {
     flexGrow: 1,
-    backgroundColor: "$background1",
   },
 });
