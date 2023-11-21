@@ -31,15 +31,15 @@ const RegisterForm = () => {
 
   const mutation = useMutation({
     mutationFn: register,
-    onSuccess: (authToken: string | null) => {
-      if (!authToken) {
-        Alert.alert(texts.registerError, texts.pleaseTryAgain);
+    onSuccess: (response: RegisterResponseProtocol) => {
+      if (!response.success) {
+        Alert.alert(texts.registerError, response.message);
         return;
       }
 
       reset();
       navigate("Home", {
-        authToken,
+        authToken: response.data.token,
       });
     },
   });

@@ -1,11 +1,12 @@
 import { requestAdapter } from "@repository/adapters";
 import { ServiceRoutes } from "@repository/constants";
+import { defaultRegisterErrorMessage } from "./errors/errorMessages";
 
 const register = async ({
   username,
   password,
   displayName,
-}: RegisterRequestProtocol): Promise<string | null> => {
+}: RegisterRequestProtocol): Promise<RegisterResponseProtocol> => {
   const registerEndPoint = `${process.env.EXPO_PUBLIC_API_ROOT}/${ServiceRoutes.register}`;
 
   try {
@@ -17,12 +18,12 @@ const register = async ({
       },
     );
 
-    if (!result.success) return null;
-
-    return result.data.token;
+    return result;
   } catch (error) {
-    console.log("🚀 ~ error:", error);
-    return null;
+    return {
+      success: false,
+      message: defaultRegisterErrorMessage,
+    };
   }
 };
 
