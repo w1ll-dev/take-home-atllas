@@ -30,7 +30,7 @@ const yupLoginSchema = yup.object().shape<YupSchemaShape<LoginFieldValues>>({
     .test(
       "no-space",
       textValidations.errors.username,
-      value => !value.includes(" "),
+      value => !value?.includes(" "),
     )
     .required(textValidations.errors.username),
   password: yup
